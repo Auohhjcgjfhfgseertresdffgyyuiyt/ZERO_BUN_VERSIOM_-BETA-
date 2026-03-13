@@ -1,0 +1,88 @@
+
+{
+  "name": "fearless",
+  "version": "6.7.0",
+  "developer": "officialdittaz",
+  "description": "Simple WhatsApp bot with multi device.",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "start": "bun ./src/index.js",
+    "format": "prettier --write ."
+  },
+  "engines": {
+    "bun": ">=1.3.2"
+  },
+  "author": "Dittaz",
+  "license": "MIT",
+  "dependencies": {
+    "@google/genai": "^1.27.0",
+    "@google/generative-ai": "^0.24.1",
+    "axios": "^1.13.2",
+    "baileys": "github:officialdittaz/baileys-ext",
+    "file-type": "^18.7.0",
+    "fs-extra": "^11.3.2",
+    "mongoose": "^9.0.0",
+    "node-webpmux": "^3.2.1",
+    "sharp": "^0.34.4",
+    "yt-search": "^2.13.1"
+  },
+  "devDependencies": {
+    "ffmpeg-static": "^5.2.0",
+    "node-webpmux": "^3.2.1",
+    "prettier": "^3.6.2",
+    "pino-pretty": "^13.1.2"
+  },
+  "imports": {
+    "#tiktok": "./lib/api/tiktok.js",
+    "#instagram": "./lib/api/instagram.js",
+    "#twitter": "./lib/api/twitter.js",
+    "#threads": "./lib/api/threads.js",
+    "#play": "./lib/api/play.js",
+    "#spotify": "./lib/api/spotify.js",
+    "#ytmp3": "./lib/api/ytmp3.js",
+    "#ytmp4": "./lib/api/ytmp4.js",
+    "#spotifydl": "./lib/api/spotifydl.js",
+    "#removebg": "./lib/api/removebg.js",
+    "#remini": "./lib/api/remini.js",
+    "#global": "./src/global.js",
+    "#settings": "./src/settings.js",
+    "#sqlite-auth": "./lib/auth/sqlite-auth.js",
+    "#loader-plugins": "./lib/core/loader-plugins.js",
+    "#loader-plugins2": "./lib/core/loader-plugins2.js",
+    "#cleaner": "./lib/core/cleaner.js",
+    "#event": "./lib/core/event.js",
+    "#chalk": "./modules/chalk.js",
+    "#connection": "./lib/core/connection.js",
+    "#logger": "./modules/logger.js",
+    "#ffmpeg": "./modules/ffmpeg.js",
+    "#uploader": "./lib/uploader.js",
+    "#similarity": "./modules/stringSimilarity.js",
+    "#fs": "./modules/fs.js"
+  },
+  "prettier": {
+    "printWidth": 500,
+    "tabWidth": 2,
+    "useTabs": false,
+    "semi": true,
+    "singleQuote": false,
+    "trailingComma": "es5",
+    "bracketSpacing": true,
+    "arrowParens": "always",
+    "endOfLine": "lf",
+    "bracketSameLine": false,
+    "overrides": [
+      {
+        "files": "*.js",
+        "options": {
+          "commentPreserveAll": true
+        }
+      }
+    ]
+  },
+  "trustedDependencies": [
+    "baileys",
+    "protobufjs",
+    "sharp"
+  ]
+}
