@@ -1,0 +1,57 @@
+ 
+
+//------------ OWNER SETTINGS 
+global.nomerOwner = "6285701414272";
+global.nomerOwner2 = "6285701414272";
+global.ownerPhoto = 'https://e.top4top.io/p_3425vqxqi1.jpg' // photo owner
+global.ownerName = "TIRO"; 
+global.gender = 'Boys'  
+global.agama = 'Islam' 
+global.tanggalLahir = '17/12/1998' // contoh '25/11/1993'
+global.hobi = 'ngoding'
+global.sifat ='tukang satir'
+global.tempatTinggal = 'Magelang-Jogja'
+global.waifu = 'Megawati'
+
+     
+//------------ BOT SETTINGS 
+global.nomerBot = "6283879106234"
+//global.nomerBot = "6287782401679"//untuk pairing code
+global.pairingCode = true // true / false
+global.botName = "zero"
+global.nickName = "zer"
+global.session = "session" 
+global.runWith = "DIgital Ocean 🐋"
+global.antiSpam = true
+global.fake = botName
+global.print = true //menampilkan pesan di log
+global.copyright = `© ${botName}`
+global.packName = "Violet Extension"
+global.authorName = ''
+global.ownerBot = `${nomerOwner}@s.whatsapp.net`
+global.limitCount = 15;
+global.gameCount = 30
+global.Intervalmsg = 2000; //detik
+global.cooldownTime = 30_000
+global.mongodb = "mongodb+srv://zero:nfsmwrock123@zero.xb7cayv.mongodb.net/?retryWrites=true&w=majority"
+global.dbName = "zeroone"
+global.myUrl = "https://wa.me/c/6285953938243"
+global.newsletterJid = "120363249625006239@newsletter"
+global.newsletterName = "ZERO INFO"
+global.botPhoto = ''
+
+
+
+global.fotoRandom = [
+  "https://telegra.ph/file/63e8a49b86824c3402c2a.jpg",
+];
+
+//------------ APIKEYS SETTINGS
+global.apiflash = "39fc26a0f40048eb838b8c35e0789947"; //
+global.goFileApi = 'tBe1uKKCxI2decUBIf2JsjiD5O7hgzQ4'
+global.serApi = '230f61aac12e54b5585a893d729079b451e02a672a3bd17ef42f7bc7c9385182'
+global.geminiApi ='AIzaSyCh3nquTfRQs2juL2SddgXd5bC37pWT1jQ' //Dapatkan apikey di https://aistudio.google.com/api-keys, untuk bisa mengaktifkan ai 
+global.elevenlabsApi = 'sk_f144d536953d69153f9df76ab0185b3e7de044bb8fd8ec04'
+global.geminiApiKeys = ['AIzaSyCh3nquTfRQs2juL2SddgXd5bC37pWT1jQ','AIzaSyC3i6qSI4lnIMcsTIttsqKskuKUxT9jCPM']
+ 
+ 
