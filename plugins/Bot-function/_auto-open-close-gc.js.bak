@@ -1,0 +1,100 @@
+ let handler = (m) => m;
+
+// Cache grup biar gak spam ke server
+let groupListCache = [];
+let lastFetch = 0;
+const cacheDuration = 60 * 60 * 1000; // 1 jam
+const cacheTTL = 10 * 60 * 1000; // refresh cache setiap 10 menit
+const maxCacheSize = 200; // Naik dikit, lebih fleksibel buat banyak grup
+
+handler.before = async function (m, { conn }) {
+  const groupTime = global.db.data.others['groupTime'] || [];
+  global.db.data.others['groupTime'] = groupTime;
+
+  // Hindari multiple interval
+  if (handler._intervalActive) return;
+  handler._intervalActive = true;
+
+  // Jalankan interval auto open/close
+  handler._interval = setInterval(async () => {
+    if (groupTime.length === 0) return;
+
+    const now = Date.now();
+    const shouldRefetch = now - lastFetch > cacheTTL;
+
+    // Re-fetch daftar grup setiap 10 menit saja
+    if (shouldRefetch) {
+      try {
+        const groups = await conn.groupFetchAllParticipating();
+        groupListCache = Object.values(groups).map(g => ({
+          id: g.id,
+          subject: g.subject,
+          lastFetched: now
+        }));
+        lastFetch = now;
+        console.log(`[INFO] Cache grup diperbarui (${groupListCache.length} grup)`);
+      } catch (err) {
+        if (String(err).includes('rate-overlimit')) {
+          console.log('[WARN] Terlalu sering ambil daftar grup, gunakan cache');
+        } else {
+          console.error('[ERROR] Gagal ambil grup:', err);
+        }
+      }
+    }
+
+    // Hapus cache kadaluarsa
+    groupListCache = groupListCache.filter(g => now - g.lastFetched < cacheDuration);
+
+    // Batasi ukuran cache (jaga RAM)
+    if (groupListCache.length > maxCacheSize) {
+      groupListCache = groupListCache.slice(0, maxCacheSize);
+    }
+
+    // Loop untuk auto open / close
+    for (const id of [...groupTime]) {
+      const chat = global.db.data.chats[id];
+      if (!chat) continue;
+
+      // Pastikan grup masih valid di cache
+      const isValid = groupListCache.some(g => g.id === id);
+      if (!isValid) {
+        groupTime.splice(groupTime.indexOf(id), 1);
+        console.log(`[CLEAN] Grup ${id} dihapus dari jadwal karena tidak valid`);
+        continue;
+      }
+
+      try {
+        if (chat.open && now >= chat.open) {
+          await conn.groupSettingUpdate(id, 'not_announcement');
+          await conn.sendMessage(id, { text: `⏰ *Tepat Waktu*\nGrup telah dibuka untuk semua anggota.` });
+          chat.open = 0;
+        }
+
+        if (chat.close && now >= chat.close) {
+          await conn.groupSettingUpdate(id, 'announcement');
+          await conn.sendMessage(id, { text: `⏰ *Tepat Waktu*\nGrup telah ditutup, hanya admin yang dapat mengirim pesan.` });
+          chat.close = 0;
+        }
+      } catch (err) {
+        if (String(err).includes('rate-overlimit')) {
+          console.log(`[WARN] Rate limit saat update grup ${id}`);
+        } else {
+          console.error(`[ERROR] Gagal update grup ${id}:`, err);
+        }
+      }
+    }
+  }, 30000); // jalan tiap 30 detik
+};
+
+// Bersihkan interval saat proses berhenti
+const stopCleaning = () => {
+  if (handler._interval) {
+    clearInterval(handler._interval);
+    handler._intervalActive = false;
+    console.log('🛑 Auto Open/Close GC dihentikan');
+  }
+};
+
+['SIGINT', 'SIGTERM', 'exit', 'uncaughtException'].forEach(sig => process.on(sig, stopCleaning));
+
+export default handler;
