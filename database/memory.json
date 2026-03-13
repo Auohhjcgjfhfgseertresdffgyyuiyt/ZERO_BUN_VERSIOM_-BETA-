@@ -1,0 +1,108 @@
+{
+  "memory": {
+    "120363058989977423@g.us": {
+      "history": [
+        {
+          "role": "user",
+          "name": "Muhammad Tiroo",
+          "phone": "6285701414272",
+          "text": "Bot yg ini",
+          "quoted": {
+            "name": "Violet",
+            "phone": "6287782401679",
+            "text": "🔎 Searching..."
+          }
+        },
+        {
+          "role": "assistant",
+          "name": "Violet",
+          "phone": "6287782401679",
+          "text": "Bot yg ini ada apa kak?",
+          "quoted": {
+            "name": "Muhammad Tiroo",
+            "phone": "6285701414272",
+            "text": "Bot yg ini"
+          }
+        },
+        {
+          "role": "user",
+          "name": "Muhammad Tiroo",
+          "phone": "6285701414272",
+          "text": "[Sticker]",
+          "quoted": {
+            "name": "Violet",
+            "phone": "6287782401679",
+            "text": "[Voice 236s]"
+          }
+        },
+        {
+          "role": "assistant",
+          "name": "Violet",
+          "phone": "6287782401679",
+          "text": "Oke kak, ada yang bisa Vio bantu?",
+          "quoted": {
+            "name": "Muhammad Tiroo",
+            "phone": "6285701414272",
+            "text": "[Sticker]"
+          }
+        },
+        {
+          "role": "user",
+          "name": "Muhammad Tiroo",
+          "phone": "6285701414272",
+          "text": "Udah tu",
+          "quoted": {
+            "name": "Violet",
+            "phone": "6287782401679",
+            "text": "List Owner\n- wa.me/6285701414272 \n- wa.me/ \n"
+          }
+        },
+        {
+          "role": "assistant",
+          "name": "Violet",
+          "phone": "6287782401679",
+          "text": "Oke kak.",
+          "quoted": {
+            "name": "Muhammad Tiroo",
+            "phone": "6285701414272",
+            "text": "Udah tu"
+          }
+        },
+        {
+          "role": "user",
+          "name": "Muhammad Tiroo",
+          "phone": "6285701414272",
+          "text": "Wadoh",
+          "quoted": {
+            "name": "Violet",
+            "phone": "6287782401679",
+            "text": "Gagal mendapatkan info video: error: Request failed with status code 521"
+          }
+        },
+        {
+          "role": "assistant",
+          "name": "Violet",
+          "phone": "6287782401679",
+          "text": "Iya kak, Vio gagal mengambil info videonya nih. Maaf ya.",
+          "quoted": {
+            "name": "Muhammad Tiroo",
+            "phone": "6285701414272",
+            "text": "Wadoh"
+          }
+        },
+        {
+          "role": "user",
+          "name": "Muhammad Tiroo",
+          "phone": "6285701414272",
+          "text": "Ini bisa nih",
+          "quoted": {
+            "name": "Violet",
+            "phone": "6287782401679",
+            "text": "[Voice 22s]"
+          }
+        }
+      ],
+      "reasoning": {}
+    }
+  }
+}
